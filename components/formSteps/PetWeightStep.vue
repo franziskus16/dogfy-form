@@ -20,7 +20,7 @@ function saveAndContinue() {
     <h2 class="text-custom-lg font-semibold mb-4 text-center">
       ¿Cuánto pesa {{ form.data.petName }}? (en kg)
     </h2>
-    <BaseInput v-model="weight" type="number" unit="Kg" />
+    <BaseInput v-model="weight" type="number" unit="Kg" placeholder="0" />
     <BaseButton :disabled="!weight" variant="primary" @click="saveAndContinue">
       Siguiente
     </BaseButton>

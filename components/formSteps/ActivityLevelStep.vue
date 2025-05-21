@@ -24,10 +24,11 @@ function saveAndContinue() {
       v-model="activityLevel"
       placeholder="Selecciona una opción"
       :options="[
-        { value: 'low', label: 'Bajo' },
-        { value: 'medium', label: 'Medio' },
-        { value: 'high', label: 'Alto' },
+        { value: 'Bajo', label: 'Bajo' },
+        { value: 'Medio', label: 'Medio' },
+        { value: 'Alto', label: 'Alto' },
       ]"
+      data-testid="activity-level-select"
     />
     <BaseButton
       :disabled="!activityLevel"

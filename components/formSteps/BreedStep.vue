@@ -48,6 +48,7 @@ function saveAndContinue() {
         breeds.map((breed) => ({ value: breed.name, label: breed.name }))
       "
       placeholder="Selecciona una raza"
+      data-testid="breed-select"
     />
     <div v-if="selectedBreed">
       <img

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useFormStore } from "../../store/form";
 import BaseButton from "../base/BaseButton.vue";
 
 const form = useFormStore();
+const formSubmitted = ref(false);
 
 function goBack() {
   form.goToPreviousStep();
@@ -10,7 +12,7 @@ function goBack() {
 
 function submitForm() {
   form.completeForm();
-  alert("Formulario enviado con éxito!");
+  formSubmitted.value = true;
 }
 </script>
 
@@ -20,11 +22,11 @@ function submitForm() {
       Resumen de los datos de {{ form.data.petName }}
     </h2>
     <ul class="mb-6 space-y-2">
+      <li><strong>Raza:</strong> {{ form.data.breed }}</li>
       <li><strong>Nombre de la mascota:</strong> {{ form.data.petName }}</li>
       <li><strong>Edad de la mascota:</strong> {{ form.data.petAge }}</li>
       <li><strong>Peso de la mascota:</strong> {{ form.data.petWeight }} kg</li>
       <li><strong>Objetivo de dieta:</strong> {{ form.data.dietGoal }}</li>
-      <li><strong>Raza:</strong> {{ form.data.breed }}</li>
       <li>
         <strong>Preferencias de comida:</strong>
         {{ form.data.foodPreferences || "Ninguna" }}
@@ -36,7 +38,16 @@ function submitForm() {
     </ul>
 
     <div class="flex justify-between pb-5">
-      <BaseButton variant="primary" @click="submitForm"> Enviar </BaseButton>
+      <BaseButton v-if="!formSubmitted" variant="primary" @click="submitForm">
+        Enviar
+      </BaseButton>
+      <p
+        v-if="formSubmitted"
+        class="text-orange-600 text-4xl font-semibold"
+        data-testid="success-message"
+      >
+        Formulario enviado con éxito!
+      </p>
     </div>
   </div>
 </template>

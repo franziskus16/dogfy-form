@@ -1,5 +1,7 @@
 <!-- components/base/BaseSelect.vue -->
 <script setup lang="ts">
+import { useAttrs } from "vue";
+
 const props = defineProps<{
   modelValue: string | number | null;
   options: Array<{ value: string | number; label: string }>;
@@ -11,6 +13,10 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: "update:modelValue", value: string | number): void;
 }>();
+
+defineOptions({ inheritAttrs: false });
+
+const attrs = useAttrs();
 
 function onChange(event: Event) {
   const target = event.target as HTMLSelectElement;
@@ -30,6 +36,7 @@ function onChange(event: Event) {
         :value="modelValue"
         @change="onChange"
         :disabled="disabled"
+        v-bind="attrs"
       >
         <option disabled value="">
           {{ placeholder || "Selecciona una opción" }}

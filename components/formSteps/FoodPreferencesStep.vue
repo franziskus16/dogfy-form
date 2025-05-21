@@ -21,38 +21,47 @@ function saveAndContinue() {
       ¿Cómo se comporta {{ form.data.petName }} con la comida?
     </h2>
 
-    <div class="space-y-4 w-full text-left">
-      <label class="flex items-center space-x-3">
+    <div class="flex flex-row space-x-10 justify-center w-full">
+      <label class="flex flex-col items-center cursor-pointer">
         <input
           type="radio"
           name="foodPreference"
           value="selectivo"
           v-model="foodPreference"
-          class="accent-blue-600"
+          class="accent-orange-600 mb-2"
         />
-        <span>Selectivo: no se acaba la comida</span>
+        <span class="text-sm">
+          <strong class="block text-md text-orange-700 mb-1">Selectivo:</strong>
+          no se acaba la comida
+        </span>
       </label>
 
-      <label class="flex items-center space-x-3">
+      <label class="flex flex-col items-center cursor-pointer">
         <input
           type="radio"
           name="foodPreference"
           value="gourmet"
           v-model="foodPreference"
-          class="accent-blue-600"
+          class="accent-orange-600 mb-2"
         />
-        <span>Gourmet: prueba cosas nuevas</span>
+        <span class="text-sm">
+          <strong class="block text-md text-orange-700 mb-1">Gourmet:</strong>
+          prueba cosas nuevas
+        </span>
       </label>
 
-      <label class="flex items-center space-x-3">
+      <label class="flex flex-col items-center cursor-pointer">
         <input
           type="radio"
           name="foodPreference"
           value="gloton"
           v-model="foodPreference"
-          class="accent-blue-600"
+          class="accent-orange-600 mb-2"
         />
-        <span>Glotón: devora todo</span>
+        <span class="text-sm">
+          <strong class="block text-md text-orange-700 mb-1">Glotón:</strong>
+          devora todo
+        </span>
       </label>
     </div>
 

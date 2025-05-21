@@ -18,17 +18,18 @@ function saveAndContinue() {
 <template>
   <div class="flex flex-col items-center text-center space-y-14">
     <h2 class="text-custom-lg font-semibold mb-4 text-center">
-      ¿Qué dieta cres que le irá mejor a {{ form.data.petName }}?
+      ¿Qué dieta crees que le irá mejor a {{ form.data.petName }}?
     </h2>
     <BaseSelect
       v-model="dietGoal"
       placeholder="Selecciona una opción"
       :options="[
-        { value: 'weight_loss', label: 'Pérdida de peso' },
-        { value: 'weight_gain', label: 'Aumento de peso' },
-        { value: 'maintenance', label: 'Mantenimiento' },
+        { value: 'Pérdida de peso', label: 'Pérdida de peso' },
+        { value: 'Aumento de peso', label: 'Aumento de peso' },
+        { value: 'Mantenimiento', label: 'Mantenimiento' },
         { value: 'other', label: 'Otro' },
       ]"
+      data-testid="diet-goal-select"
     />
     <BaseButton
       :disabled="!dietGoal"

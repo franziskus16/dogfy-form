@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { Group } from "../domains/form/entities/Group";
-import { FormData } from "../domains/form/entities/FormData";
+import type { FormData } from "../domains/form/entities/FormData";
 import { logAnalytics } from "../infrastructure/analytics/logger";
 
 const STORAGE_KEY = "dogfy_form_state";
@@ -52,7 +52,7 @@ export const useFormStore = defineStore("form", {
           petAge: 0,
           petWeight: 0,
           dietGoal: "",
-          foodPreferences: 0,
+          foodPreferences: [],
           activityLevel: "",
         };
 
@@ -118,7 +118,7 @@ export const useFormStore = defineStore("form", {
         petAge: 0,
         petWeight: 0,
         dietGoal: "",
-        foodPreferences: 0,
+        foodPreferences: [],
         activityLevel: "",
       };
       this.saveState();
