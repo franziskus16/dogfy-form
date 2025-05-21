@@ -21,8 +21,15 @@ export const useFormStore = defineStore("form", {
 
   actions: {
     init() {
-      const random = Math.random() < 0.5 ? "A" : "B";
-      this.group = random as Group;
+      const savedGroup = localStorage.getItem("form_group") as Group | null;
+
+      if (savedGroup === "A" || savedGroup === "B") {
+        this.group = savedGroup;
+      } else {
+        const random = Math.random() < 0.5 ? "A" : "B";
+        this.group = random as Group;
+        localStorage.setItem("form_group", this.group);
+      }
 
       this.currentStep = 0;
       this.data = {
