@@ -9,8 +9,7 @@ function goBack() {
 }
 
 function submitForm() {
-  // Aquí podrías añadir la lógica para enviar el formulario,
-  // como una llamada a API o guardar en localStorage
+  form.completeForm();
   alert("Formulario enviado con éxito!");
 }
 </script>
