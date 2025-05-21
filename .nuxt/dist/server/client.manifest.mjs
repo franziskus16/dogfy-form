@@ -1,0 +1,1 @@
+export { default } from "file:///Users/francescgimenezgil/iCloud%20Drive%20(Archive)/Documents/projects/dogfy-form/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
