@@ -1762,20 +1762,41 @@ const breedImage$1 = /*#__PURE__*/Object.freeze({
 
 const breeds = defineEventHandler(async () => {
   const config = useRuntimeConfig();
-  const response = await fetch("https://api.thedogapi.com/v1/breeds", {
-    headers: {
-      "x-api-key": config.DOG_API_KEY
+  const apiKey = config.DOG_API_KEY;
+  if (!apiKey) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: "DOG_API_KEY is not defined in the environment variables."
+    });
+  }
+  try {
+    const response = await fetch("https://api.thedogapi.com/v1/breeds", {
+      headers: {
+        "x-api-key": apiKey
+      }
+    });
+    if (!response.ok) {
+      throw createError({
+        statusCode: response.status,
+        statusMessage: `Dog API responded with ${response.statusText}`
+      });
     }
-  });
-  const breeds = await response.json();
-  return breeds.map((breed) => {
-    var _a;
-    return {
-      id: breed.id,
-      name: breed.name,
-      image: ((_a = breed.image) == null ? void 0 : _a.url) || null
-    };
-  });
+    const breeds = await response.json();
+    return breeds.map((breed) => {
+      var _a;
+      return {
+        id: breed.id,
+        name: breed.name,
+        image: ((_a = breed.image) == null ? void 0 : _a.url) || null
+      };
+    });
+  } catch (error) {
+    console.error("Error fetching breeds:", error);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Error fetching dog breeds."
+    });
+  }
 });
 
 const breeds$1 = /*#__PURE__*/Object.freeze({

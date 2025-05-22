@@ -105,7 +105,7 @@ Dejar ejecutado el proyecto con npm run dev para poder hacer el test e2e:
 npx playwright test
 ```
 
-al final del proceso deberia sacar un screenshot del resultado final de todo el testing completad.
+al final del proceso deberia sacar un screenshot del resultado final de todo el testing completado.
 
 ---
 
