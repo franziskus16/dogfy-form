@@ -1,2 +1,21 @@
-node_modules
+# Node
+node_modules/
+dist/
+.npm/
+
+# Nuxt
+.nuxt/
+.output/
 .env
+
+# Test
+test-results/
+coverage/
+
+# Editor y sistema operativo
+.DS_Store
+.idea/
+.vscode/
+
+# Archivos locales
+estructura.txt
