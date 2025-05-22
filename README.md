@@ -17,6 +17,7 @@ El formulario incluye un mecanismo de **A/B testing** que asigna usuarios aleato
 - Playwright para tests end-to-end
 - Storybook para documentación de componentes
 - LocalStorage para persistencia
+- Tailwind y componentes base para interfaz coherente y reutilizable
 
 ---
 
@@ -53,6 +54,26 @@ npm run dev
 
 La app estará disponible en [http://localhost:3000](http://localhost:3000).
 
+---
+
+### Configuración del archivo .env para usar DOG API
+
+1. Crea un archivo .env en la raíz del proyecto:
+
+```bash
+cp .env.example .env
+```
+
+2. Regístrate y consigue una API Key gratuita en thedogapi.com
+
+3. Añade tu clave al archivo .env así:
+
+```bash
+DOG_API_KEY=tu_api_key_aquí
+```
+
+---
+
 ### Uso con Docker (opcional)
 
 ```bash
@@ -70,6 +91,12 @@ docker run -p 3000:3000 multi-step-form
 npm run test
 ```
 
+modo interactivo con UI:
+
+```bash
+npx vitest --ui
+```
+
 ### Tests end-to-end con Playwright
 
 Dejar ejecutado el proyecto con npm run dev para poder hacer el test e2e:
@@ -77,6 +104,8 @@ Dejar ejecutado el proyecto con npm run dev para poder hacer el test e2e:
 ```bash
 npx playwright test
 ```
+
+al final del proceso deberia sacar un screenshot del resultado final de todo el testing completad.
 
 ---
 
