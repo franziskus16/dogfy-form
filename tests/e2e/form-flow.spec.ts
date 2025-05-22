@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test("flujo completo del formulario", async ({ page }) => {
   await page.goto("http://localhost:3000/form");
 
-  // Paso 1: Raza (select nativo)
+  // Paso 1: Raza
   await page.waitForSelector('[data-testid="breed-select"]');
   await page.selectOption('[data-testid="breed-select"]', "Akita");
   await page.click('button:has-text("Siguiente")');
@@ -26,9 +26,7 @@ test("flujo completo del formulario", async ({ page }) => {
   await weightInput.fill("12");
   const nextButton = page.getByRole("button", { name: "Siguiente" });
   await expect(nextButton).toBeEnabled();
-  // Haz clic
   await nextButton.click();
-  // Paso 5: asegúrate de que carga el texto del siguiente paso
   await expect(
     page.locator("text=¿Qué dieta crees que le irá mejor")
   ).toBeVisible();
@@ -45,11 +43,9 @@ test("flujo completo del formulario", async ({ page }) => {
   await page.getByText("Glotón: devora todo").click();
   await page.getByRole("button", { name: "Siguiente" }).click();
 
-  // Paso 7: Actividad (similar si usas BaseSelect también aquí)
+  // Paso 7: Actividad
   await page.selectOption('[data-testid="activity-level-select"]', "Alto");
   await page.click('button:has-text("Siguiente")');
-
-  await page.screenshot({ path: "after-activity.png" });
 
   // Paso 8: Resumen
   await expect(page.locator("text=Firulais")).toBeVisible();
@@ -65,5 +61,6 @@ test("flujo completo del formulario", async ({ page }) => {
   await expect(page.locator('[data-testid="success-message"]')).toHaveText(
     "Formulario enviado con éxito!"
   );
+  // Crear un png para visualizar el final del envio del form
   await page.screenshot({ path: "after-Resume.png" });
 });

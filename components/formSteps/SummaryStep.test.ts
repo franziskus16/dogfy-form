@@ -32,16 +32,17 @@ describe("SummaryStep.vue", () => {
     expect(wrapper.text()).toContain("Grupo: A");
   });
 
-  it("llama a completeForm y muestra alerta al enviar", async () => {
+  it("llama a completeForm y muestra mensaje de éxito al enviar", async () => {
     const form = useFormStore();
     form.completeForm = vi.fn();
 
     const wrapper = mount(SummaryStep);
-    window.alert = vi.fn();
 
     await wrapper.find("button").trigger("click");
-
     expect(form.completeForm).toHaveBeenCalled();
-    expect(window.alert).toHaveBeenCalledWith("Formulario enviado con éxito!");
+
+    const successMessage = wrapper.find('[data-testid="success-message"]');
+    expect(successMessage.exists()).toBe(true);
+    expect(successMessage.text()).toBe("Formulario enviado con éxito!");
   });
 });
