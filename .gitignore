@@ -1,21 +1,29 @@
 # Node
 node_modules/
 dist/
-.npm/
+.nyc_output/
+coverage/
 
 # Nuxt
 .nuxt/
 .output/
 .env
+.env.*.local
 
-# Test
-test-results/
-coverage/
-
-# Editor y sistema operativo
+# OS
 .DS_Store
-.idea/
-.vscode/
 
-# Archivos locales
+# Logs
+*.log
+
+# Playwright / Vitest
+test-results/
+.vitest/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Archivos Locales
 estructura.txt
