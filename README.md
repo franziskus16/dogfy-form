@@ -18,6 +18,7 @@ El formulario incluye un mecanismo de **A/B testing** que asigna usuarios aleato
 - Storybook para documentación de componentes
 - LocalStorage para persistencia
 - Tailwind y componentes base para interfaz coherente y reutilizable
+- DogAPI (https://www.thedogapi.com/) - para el listado de razas e imagenes
 
 ---
 
